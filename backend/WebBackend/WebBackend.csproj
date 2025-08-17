@@ -37,11 +37,7 @@
     <Folder Include="Dtos\Tags\" />
     <Folder Include="Dtos\Users\" />
     <Folder Include="Dtos\WatchHistories\" />
-    <Folder Include="Repositories\Comments\" />
-    <Folder Include="Repositories\Films\" />
     <Folder Include="Repositories\Movies\" />
-    <Folder Include="Repositories\Episode\" />
-    <Folder Include="Repositories\FilmActor\" />
     <Folder Include="Repositories\Genres\" />
     <Folder Include="Repositories\WatchHistories\" />
     <Folder Include="Repositories\Seasons\" />
