@@ -18,9 +18,60 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Dtos\" />
-    <Folder Include="Repositories\" />
-    <Folder Include="Services\" />
+    <Folder Include="Controllers\" />
+    <Folder Include="Dtos\Actors\" />
+    <Folder Include="Dtos\Bookmarks\" />
+    <Folder Include="Dtos\Comments\" />
+    <Folder Include="Dtos\Episode\" />
+    <Folder Include="Dtos\FilmActor\" />
+    <Folder Include="Dtos\Films\" />
+    <Folder Include="Dtos\Genres\" />
+    <Folder Include="Dtos\Movies\" />
+    <Folder Include="Dtos\Notifications\" />
+    <Folder Include="Dtos\ProductionCompanies\" />
+    <Folder Include="Dtos\Ratings\" />
+    <Folder Include="Dtos\Reports\" />
+    <Folder Include="Dtos\SearchLogs\" />
+    <Folder Include="Dtos\Seasons\" />
+    <Folder Include="Dtos\Series\" />
+    <Folder Include="Dtos\Tags\" />
+    <Folder Include="Dtos\Users\" />
+    <Folder Include="Dtos\WatchHistories\" />
+    <Folder Include="Repositories\Comments\" />
+    <Folder Include="Repositories\Films\" />
+    <Folder Include="Repositories\Movies\" />
+    <Folder Include="Repositories\Episode\" />
+    <Folder Include="Repositories\FilmActor\" />
+    <Folder Include="Repositories\Genres\" />
+    <Folder Include="Repositories\WatchHistories\" />
+    <Folder Include="Repositories\Seasons\" />
+    <Folder Include="Repositories\SearchLogs\" />
+    <Folder Include="Repositories\Reports\" />
+    <Folder Include="Repositories\Ratings\" />
+    <Folder Include="Repositories\ProductionCompanies\" />
+    <Folder Include="Repositories\Notifications\" />
+    <Folder Include="Repositories\Series\" />
+    <Folder Include="Repositories\Tags\" />
+    <Folder Include="Repositories\Users\" />
+    <Folder Include="Services\Actors\" />
+    <Folder Include="Services\Bookmarks\" />
+    <Folder Include="Services\Comments\" />
+    <Folder Include="Services\Episode\" />
+    <Folder Include="Services\FilmActor\" />
+    <Folder Include="Services\Films\" />
+    <Folder Include="Services\Genres\" />
+    <Folder Include="Services\Movies\" />
+    <Folder Include="Services\Auths\" />
+    <Folder Include="Services\Notifications\" />
+    <Folder Include="Services\ProductionCompanies\" />
+    <Folder Include="Services\Ratings\" />
+    <Folder Include="Services\Reports\" />
+    <Folder Include="Services\SearchLogs\" />
+    <Folder Include="Services\Seasons\" />
+    <Folder Include="Services\Series\" />
+    <Folder Include="Services\Tags\" />
+    <Folder Include="Services\Users\" />
+    <Folder Include="Services\WatchHistories\" />
   </ItemGroup>
 
 </Project>
