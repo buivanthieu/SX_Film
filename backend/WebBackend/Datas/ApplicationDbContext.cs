@@ -29,7 +29,7 @@ namespace WebBackend.Datas
         public DbSet<WatchHistory> WatchHistories { get; set; }
         public DbSet<Series> Series { get; set; }
         public DbSet<Movie> Movies { get; set; }
-
+        public DbSet<BookmarkActor> BookmarkActors { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -97,6 +97,11 @@ namespace WebBackend.Datas
                 .HasForeignKey(b => b.UserId)
                 .OnDelete(DeleteBehavior.Cascade);
             modelBuilder.Entity<User>()
+                .HasMany(u => u.BookmarkActors)
+                .WithOne(a => a.User)
+                .HasForeignKey(a => a.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<User>()
                 .HasMany(u => u.Notifications)
                 .WithOne(n => n.User)
                 .HasForeignKey(n => n.UserId)
@@ -138,6 +143,17 @@ namespace WebBackend.Datas
 
             modelBuilder.Entity<FilmActor>()
                 .HasKey(fa => new { fa.FilmId, fa.ActorId });
+
+            modelBuilder.Entity<Actor>()
+                .HasMany(a => a.FilmActors)
+                .WithOne(fa => fa.Actor)
+                .HasForeignKey(fa => fa.ActorId)
+                .OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<Actor>()
+                .HasMany(a => a.BookmarkActors)
+                .WithOne(ba => ba.Actor)
+                .HasForeignKey(ba => ba.ActorId)
+                .OnDelete(DeleteBehavior.Cascade);
 
         }
     }
