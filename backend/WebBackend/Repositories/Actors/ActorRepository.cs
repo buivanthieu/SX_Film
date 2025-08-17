@@ -46,8 +46,11 @@ namespace WebBackend.Repositories.Actors
 
         public async Task UpdateActor(Actor actor)
         {
-            _context.Actors.Update(actor);
+            var existingActor = await _context.Actors.FindAsync(actor.Id)
+                ?? throw new KeyNotFoundException();
+            _context.Entry(existingActor).CurrentValues.SetValues(actor);
             await _context.SaveChangesAsync();
+
         }
     }
 }
