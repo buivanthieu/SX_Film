@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Repositories\ProductionCompanies\**" />
+    <Content Remove="Repositories\ProductionCompanies\**" />
+    <EmbeddedResource Remove="Repositories\ProductionCompanies\**" />
+    <None Remove="Repositories\ProductionCompanies\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="15.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.8" />
@@ -14,11 +21,11 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.7" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
     <Folder Include="Dtos\Actors\" />
     <Folder Include="Dtos\Bookmarks\" />
     <Folder Include="Dtos\Comments\" />
@@ -38,16 +45,9 @@
     <Folder Include="Dtos\Users\" />
     <Folder Include="Dtos\WatchHistories\" />
     <Folder Include="Repositories\Movies\" />
-    <Folder Include="Repositories\Genres\" />
-    <Folder Include="Repositories\WatchHistories\" />
     <Folder Include="Repositories\Seasons\" />
-    <Folder Include="Repositories\SearchLogs\" />
-    <Folder Include="Repositories\Reports\" />
     <Folder Include="Repositories\Ratings\" />
-    <Folder Include="Repositories\ProductionCompanies\" />
-    <Folder Include="Repositories\Notifications\" />
     <Folder Include="Repositories\Series\" />
-    <Folder Include="Repositories\Tags\" />
     <Folder Include="Repositories\Users\" />
     <Folder Include="Services\Actors\" />
     <Folder Include="Services\Bookmarks\" />
@@ -55,19 +55,12 @@
     <Folder Include="Services\Episode\" />
     <Folder Include="Services\FilmActor\" />
     <Folder Include="Services\Films\" />
-    <Folder Include="Services\Genres\" />
     <Folder Include="Services\Movies\" />
     <Folder Include="Services\Auths\" />
-    <Folder Include="Services\Notifications\" />
-    <Folder Include="Services\ProductionCompanies\" />
     <Folder Include="Services\Ratings\" />
-    <Folder Include="Services\Reports\" />
-    <Folder Include="Services\SearchLogs\" />
     <Folder Include="Services\Seasons\" />
     <Folder Include="Services\Series\" />
-    <Folder Include="Services\Tags\" />
     <Folder Include="Services\Users\" />
-    <Folder Include="Services\WatchHistories\" />
   </ItemGroup>
 
 </Project>
