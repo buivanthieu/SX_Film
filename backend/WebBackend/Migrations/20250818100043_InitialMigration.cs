@@ -18,7 +18,10 @@ namespace WebBackend.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DateOfBirth = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Country = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -125,6 +128,7 @@ namespace WebBackend.Migrations
                 {
                     FilmId = table.Column<int>(type: "int", nullable: false),
                     ActorId = table.Column<int>(type: "int", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false),
                     RoleName = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
@@ -234,6 +238,33 @@ namespace WebBackend.Migrations
                         name: "FK_FilmTags_Tags_TagsId",
                         column: x => x.TagsId,
                         principalTable: "Tags",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "BookmarkActors",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    ActorId = table.Column<int>(type: "int", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_BookmarkActors", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_BookmarkActors_Actors_ActorId",
+                        column: x => x.ActorId,
+                        principalTable: "Actors",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_BookmarkActors_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -480,6 +511,16 @@ namespace WebBackend.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_BookmarkActors_ActorId",
+                table: "BookmarkActors",
+                column: "ActorId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_BookmarkActors_UserId",
+                table: "BookmarkActors",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Bookmarks_FilmId",
                 table: "Bookmarks",
                 column: "FilmId");
@@ -598,6 +639,9 @@ namespace WebBackend.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "BookmarkActors");
+
             migrationBuilder.DropTable(
                 name: "Bookmarks");
 
