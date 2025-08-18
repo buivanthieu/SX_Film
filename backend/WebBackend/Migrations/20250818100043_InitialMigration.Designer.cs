@@ -12,7 +12,7 @@ using WebBackend.Datas;
 namespace WebBackend.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250817081348_InitialMigration")]
+    [Migration("20250818100043_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
@@ -78,8 +78,17 @@ namespace WebBackend.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("Country")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DateOfBirth")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Description")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageUrl")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
@@ -115,6 +124,32 @@ namespace WebBackend.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Bookmarks");
+                });
+
+            modelBuilder.Entity("WebBackend.Models.BookmarkActor", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ActorId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ActorId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("BookmarkActors");
                 });
 
             modelBuilder.Entity("WebBackend.Models.Comment", b =>
@@ -275,6 +310,9 @@ namespace WebBackend.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("ActorId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Id")
                         .HasColumnType("int");
 
                     b.Property<string>("RoleName")
@@ -673,6 +711,25 @@ namespace WebBackend.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("WebBackend.Models.BookmarkActor", b =>
+                {
+                    b.HasOne("WebBackend.Models.Actor", "Actor")
+                        .WithMany("BookmarkActors")
+                        .HasForeignKey("ActorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("WebBackend.Models.User", "User")
+                        .WithMany("BookmarkActors")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Actor");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("WebBackend.Models.Comment", b =>
                 {
                     b.HasOne("WebBackend.Models.Episode", "Episode")
@@ -838,6 +895,8 @@ namespace WebBackend.Migrations
 
             modelBuilder.Entity("WebBackend.Models.Actor", b =>
                 {
+                    b.Navigation("BookmarkActors");
+
                     b.Navigation("FilmActors");
                 });
 
@@ -870,6 +929,8 @@ namespace WebBackend.Migrations
 
             modelBuilder.Entity("WebBackend.Models.User", b =>
                 {
+                    b.Navigation("BookmarkActors");
+
                     b.Navigation("Bookmarks");
 
                     b.Navigation("Comments");
