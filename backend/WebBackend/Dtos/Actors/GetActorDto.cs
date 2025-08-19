@@ -1,13 +1,12 @@
-﻿namespace WebBackend.Models
+﻿namespace WebBackend.Dtos.Actors
 {
-    public class ProductionCompany
+    public class GetActorDto
     {
         public int Id { get; set; }
         public string Name { get; set; } = null!;
         public string? Description { get; set; }
+        public DateTime DateOfBirth { get; set; }
+        public string? ImageUrl { get; set; }
         public string? Country { get; set; }
-        public string? LogoUrl { get; set; }
-
-        public ICollection<Film> Films { get; set; } = new List<Film>();
     }
 }
