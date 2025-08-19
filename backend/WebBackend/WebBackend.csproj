@@ -45,7 +45,6 @@
     <Folder Include="Services\Comments\" />
     <Folder Include="Services\Episode\" />
     <Folder Include="Services\FilmActor\" />
-    <Folder Include="Services\Films\" />
     <Folder Include="Services\Auths\" />
     <Folder Include="Services\Ratings\" />
     <Folder Include="Services\Seasons\" />
