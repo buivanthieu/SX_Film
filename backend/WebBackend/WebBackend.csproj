@@ -14,7 +14,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="15.0.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.19" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.8">
@@ -26,36 +27,25 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Dtos\Actors\" />
     <Folder Include="Dtos\Bookmarks\" />
     <Folder Include="Dtos\Comments\" />
     <Folder Include="Dtos\Episode\" />
     <Folder Include="Dtos\FilmActor\" />
-    <Folder Include="Dtos\Films\" />
-    <Folder Include="Dtos\Genres\" />
-    <Folder Include="Dtos\Movies\" />
-    <Folder Include="Dtos\Notifications\" />
-    <Folder Include="Dtos\ProductionCompanies\" />
     <Folder Include="Dtos\Ratings\" />
     <Folder Include="Dtos\Reports\" />
-    <Folder Include="Dtos\SearchLogs\" />
     <Folder Include="Dtos\Seasons\" />
     <Folder Include="Dtos\Series\" />
-    <Folder Include="Dtos\Tags\" />
     <Folder Include="Dtos\Users\" />
     <Folder Include="Dtos\WatchHistories\" />
-    <Folder Include="Repositories\Movies\" />
     <Folder Include="Repositories\Seasons\" />
     <Folder Include="Repositories\Ratings\" />
     <Folder Include="Repositories\Series\" />
     <Folder Include="Repositories\Users\" />
-    <Folder Include="Services\Actors\" />
     <Folder Include="Services\Bookmarks\" />
     <Folder Include="Services\Comments\" />
     <Folder Include="Services\Episode\" />
     <Folder Include="Services\FilmActor\" />
     <Folder Include="Services\Films\" />
-    <Folder Include="Services\Movies\" />
     <Folder Include="Services\Auths\" />
     <Folder Include="Services\Ratings\" />
     <Folder Include="Services\Seasons\" />
