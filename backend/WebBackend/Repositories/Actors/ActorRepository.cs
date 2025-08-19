@@ -32,6 +32,8 @@ namespace WebBackend.Repositories.Actors
 
         public async Task<ICollection<Actor>> GetActorsByFilmId(int filmId)
         {
+            var film = await _context.Films.FindAsync(filmId)
+                ?? throw new KeyNotFoundException("key film is null");
             var actorList = await _context.Actors
                 .Where(a => a.FilmActors.Any(fa => fa.FilmId == filmId))
                 .ToListAsync();

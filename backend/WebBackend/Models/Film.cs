@@ -24,9 +24,7 @@
         public string? BannerUrl { get; set; }          
         public string? TrailerUrl { get; set; }         
 
-        // Trạng thái
-        public bool IsSeries { get; set; }               
-        public bool IsCompleted { get; set; }          
+              
 
         // Thống kê
         public int ViewCount { get; set; }               

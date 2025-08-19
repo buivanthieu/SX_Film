@@ -1,13 +1,10 @@
-﻿namespace WebBackend.Models
+﻿namespace WebBackend.Dtos.ProductionCompanies
 {
-    public class ProductionCompany
+    public class CreateProductionCompanyDto
     {
-        public int Id { get; set; }
         public string Name { get; set; } = null!;
         public string? Description { get; set; }
         public string? Country { get; set; }
         public string? LogoUrl { get; set; }
-
-        public ICollection<Film> Films { get; set; } = new List<Film>();
     }
 }
