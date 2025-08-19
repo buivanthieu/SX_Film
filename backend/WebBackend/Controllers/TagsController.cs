@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.DotNet.Scaffolding.Shared.Messaging;
+using WebBackend.Dtos.Tags;
 using WebBackend.Models;
 using WebBackend.Services.Generic;
 
@@ -24,6 +26,10 @@ namespace WebBackend.Controllers
         public async Task<IActionResult> GetById(int id)
         {
             var tag = await _tagService.GetById(id);
+            if (tag == null)
+            {
+                return NotFound($"Tag with ID {id} not found");
+            }
             return Ok(tag);
         }
 
@@ -35,8 +41,14 @@ namespace WebBackend.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add([FromBody] Tag tag)
+        public async Task<IActionResult> Add([FromBody] CreateTagDto tagDto)
         {
+            var tag = new Tag
+            {
+                Name = tagDto.Name,
+                Description = tagDto.Description
+            };
+
             if (tag == null)
             {
                 return BadRequest("Tag cannot be null");
@@ -45,19 +57,18 @@ namespace WebBackend.Controllers
             return CreatedAtAction(nameof(GetById), new { id = tag.Id }, tag);
         }
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, [FromBody] Tag tag)
-        {
-            if (tag == null || tag.Id != id)
-            {
-                return BadRequest("Tag is null or ID mismatch");
-            }
+        public async Task<IActionResult> Update(int id, [FromBody] UpdateTagDto tagDto)
+        { 
             var existingTag = await _tagService.GetById(id);
             if (existingTag == null)
             {
                 return NotFound($"Tag with ID {id} not found");
             }
-            await _tagService.Update(tag);
-            return Ok(tag);
+            existingTag.Name = tagDto.Name;
+            existingTag.Description = tagDto.Description;
+
+            await _tagService.Update(existingTag);
+            return Ok(existingTag);
         }
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)

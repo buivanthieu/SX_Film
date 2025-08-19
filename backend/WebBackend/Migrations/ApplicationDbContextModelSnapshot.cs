@@ -82,7 +82,6 @@ namespace WebBackend.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImageUrl")
@@ -257,12 +256,6 @@ namespace WebBackend.Migrations
                         .HasMaxLength(8)
                         .HasColumnType("nvarchar(8)");
 
-                    b.Property<bool>("IsCompleted")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("IsSeries")
-                        .HasColumnType("bit");
-
                     b.Property<string>("Language")
                         .HasColumnType("nvarchar(max)");
 
@@ -331,6 +324,9 @@ namespace WebBackend.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -380,6 +376,9 @@ namespace WebBackend.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Country")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LogoUrl")
@@ -640,6 +639,9 @@ namespace WebBackend.Migrations
             modelBuilder.Entity("WebBackend.Models.Series", b =>
                 {
                     b.HasBaseType("WebBackend.Models.Film");
+
+                    b.Property<bool>("IsCompleted")
+                        .HasColumnType("bit");
 
                     b.HasDiscriminator().HasValue("Series");
                 });
