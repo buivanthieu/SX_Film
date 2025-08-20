@@ -15,7 +15,7 @@ namespace WebBackend.Repositories.Films
 
         private IQueryable<Film> IncludeAllNavigation()
         {
-            return _context.Films
+            var query = _context.Films
                 .Include(f => f.Genres)
                 .Include(f => f.Tags)
                 .Include(f => f.FilmActors)
@@ -23,6 +23,14 @@ namespace WebBackend.Repositories.Films
                 .Include(f => f.Bookmarks)
                 .Include(f => f.Comments)
                 .Include(f => f.Ratings);
+
+            // load thêm navigation cho series
+            query.OfType<Seri>()
+                .Include(s => s.Seasons)
+                    .ThenInclude(se => se.Episodes)
+                .Load();
+
+            return query;
         }
 
         public async Task<ICollection<Film>> GetAllFilms()

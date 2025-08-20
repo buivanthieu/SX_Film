@@ -22,10 +22,12 @@
         // Media
         public string PosterUrl { get; set; } = null!;  
         public string? BannerUrl { get; set; }          
-        public string? TrailerUrl { get; set; }         
+        public string? TrailerUrl { get; set; }
 
-              
 
+        // Trangj thái
+        public bool IsCompleted { get; set; } = false;
+        public bool IsSeries { get; set; } = false;
         // Thống kê
         public int ViewCount { get; set; }               
         public double AverageRating { get; set; }       

@@ -1,17 +1,14 @@
-﻿namespace WebBackend.Models
+﻿using WebBackend.Dtos.Episode;
+
+namespace WebBackend.Dtos.Seasons
 {
-    public class Season
+    public class GetSeasonDto
     {
         public int Id { get; set; }
-
         public int SeriesId { get; set; }
-        public Seri Series { get; set; } = null!;
-
         public int SeasonNumber { get; set; }
         public string? Title { get; set; }
         public DateTime? ReleaseDate { get; set; }
-
-
-        public ICollection<Episode> Episodes { get; set; } = new List<Episode>();
+        public List<GetEpisodeDto> Episodes { get; set; } = new List<GetEpisodeDto>();
     }
 }

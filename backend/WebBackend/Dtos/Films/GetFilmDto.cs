@@ -13,9 +13,11 @@
         public string PosterUrl { get; set; } = null!;
         public string? BannerUrl { get; set; }
         public string? TrailerUrl { get; set; }
-        public string? Discriminator { get; set; }
+        public bool IsCompleted { get; set; }
+        public bool IsSeries { get; set; }
         public int ViewCount { get; set; }
         public double AverageRating { get; set; }
         public int RatingCount { get; set; }
+        
     }
 }
