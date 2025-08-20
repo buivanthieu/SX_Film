@@ -13,6 +13,7 @@ using System.Text;
 using WebBackend.Repositories.Movies;
 using WebBackend.Repositories.Films;
 using WebBackend.Services.Movies;
+using WebBackend.Services.Films;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -58,7 +59,7 @@ builder.Services.AddScoped<IMovieRepository, MovieRepository>();
 
 builder.Services.AddScoped(typeof(IGenericService<>), typeof(GenericService<>));
 builder.Services.AddScoped<IActorService, ActorService>();
-//builder.Services.AddScoped<IFilmService, FilmService>();
+builder.Services.AddScoped<IFilmService, FilmService>();
 builder.Services.AddScoped<IMovieService, MovieService>();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());

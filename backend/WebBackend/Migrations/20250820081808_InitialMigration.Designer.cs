@@ -12,7 +12,7 @@ using WebBackend.Datas;
 namespace WebBackend.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250819150422_InitialMigration")]
+    [Migration("20250820081808_InitialMigration")]
     partial class InitialMigration
     {
         /// <inheritdoc />
@@ -254,10 +254,16 @@ namespace WebBackend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Discriminator")
+                    b.Property<string>("FilmType")
                         .IsRequired()
                         .HasMaxLength(8)
                         .HasColumnType("nvarchar(8)");
+
+                    b.Property<bool>("IsCompleted")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsSeries")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Language")
                         .HasColumnType("nvarchar(max)");
@@ -292,7 +298,7 @@ namespace WebBackend.Migrations
 
                     b.ToTable("Films");
 
-                    b.HasDiscriminator().HasValue("Film");
+                    b.HasDiscriminator<string>("FilmType").HasValue("Film");
 
                     b.UseTphMappingStrategy();
                 });
@@ -642,9 +648,6 @@ namespace WebBackend.Migrations
             modelBuilder.Entity("WebBackend.Models.Series", b =>
                 {
                     b.HasBaseType("WebBackend.Models.Film");
-
-                    b.Property<bool>("IsCompleted")
-                        .HasColumnType("bit");
 
                     b.HasDiscriminator().HasValue("Series");
                 });
