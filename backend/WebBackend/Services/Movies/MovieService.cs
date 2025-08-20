@@ -18,8 +18,27 @@ namespace WebBackend.Services.Movies
         {
             var movie = _mapper.Map<Movie>(movieDto);
             await _movieRepository.AddMovie(movie);
-            
-        }
 
+        }
+        public async Task UpdateMovie(UpdateMovieDto movieDto)
+        {
+            var movie = _mapper.Map<Movie>(movieDto);
+            await _movieRepository.UpdateMovie(movie);
+        }
+        public async Task DeleteMovie(int id)
+        {
+            await _movieRepository.DeleteMovie(id);
+
+        }
+        public async Task<ICollection<GetMovieDto>> GetAllMovies()
+        {
+            var movies = await _movieRepository.GetAllMovies();
+            return _mapper.Map<ICollection<GetMovieDto>>(movies);
+        }
+        public async Task<GetMovieDto> GetMovieById(int id)
+        {
+            var movie = await _movieRepository.GetMovieById(id);
+            return _mapper.Map<GetMovieDto>(movie);
+        }
     }
 }

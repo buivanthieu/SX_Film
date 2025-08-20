@@ -14,6 +14,12 @@ namespace WebBackend.Controllers
         {
             _movieService = movieService;
         }
+        [HttpGet]
+        public async Task<IActionResult> GetAllMovies()
+        {
+            var movies = await _movieService.GetAllMovies();
+            return Ok(movies);
+        }
         [HttpPost]
         public async Task<IActionResult> AddMovie([FromBody] CreateMovieDto movieDto)
         {
@@ -21,9 +27,21 @@ namespace WebBackend.Controllers
                 return BadRequest("Movie cannot be null");
 
             await _movieService.AddMovie(movieDto);
-
-            // Trả về 201 Created kèm location
-            return Ok();
+            return Ok(movieDto);
+        }
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateMovie(int id, [FromBody] UpdateMovieDto movieDto)
+        {
+            
+            await _movieService.UpdateMovie(movieDto);
+            return NoContent();
+        }
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteMovie(int id)
+        {
+            
+            await _movieService.DeleteMovie(id);
+            return NoContent();
         }
 
     }

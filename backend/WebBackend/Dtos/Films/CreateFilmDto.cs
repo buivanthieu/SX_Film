@@ -12,6 +12,8 @@
         public string PosterUrl { get; set; } = null!;
         public string? BannerUrl { get; set; }
         public string? TrailerUrl { get; set; }
-        
+        public bool IsCompleted { get; set; }
+        public bool IsSeries { get; set; }
+
     }
 }

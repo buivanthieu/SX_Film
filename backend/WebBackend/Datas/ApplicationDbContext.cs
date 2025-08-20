@@ -27,7 +27,7 @@ namespace WebBackend.Datas
         public DbSet<Episode> Episodes { get; set; }
         public DbSet<Season> Seasons { get; set; }
         public DbSet<WatchHistory> WatchHistories { get; set; }
-        public DbSet<Series> Series { get; set; }
+        public DbSet<Seri> Series { get; set; }
         public DbSet<Movie> Movies { get; set; }
         public DbSet<BookmarkActor> BookmarkActors { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -36,6 +36,10 @@ namespace WebBackend.Datas
             // Configure your entity mappings here
 
             // Film
+            modelBuilder.Entity<Film>()
+                .HasDiscriminator<string>("FilmType")
+                .HasValue<Movie>("Movie")
+                .HasValue<Seri>("Series");
             modelBuilder.Entity<Film>()
                 .HasMany(f => f.Comments)
                 .WithOne(c => c.Film)
@@ -118,7 +122,7 @@ namespace WebBackend.Datas
                 .OnDelete(DeleteBehavior.Cascade);
 
             // Series
-            modelBuilder.Entity<Series>()
+            modelBuilder.Entity<Seri>()
                 .HasMany(s => s.Seasons)
                 .WithOne(se => se.Series)
                 .HasForeignKey(se => se.SeriesId)
