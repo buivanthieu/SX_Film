@@ -8,6 +8,7 @@ namespace WebBackend.Services.Movies
         Task UpdateMovie(int movieId, UpdateMovieDto movieDto);
         Task DeleteMovie(int id);
         Task<ICollection<GetMovieDto>> GetAllMovies();
+
         Task<GetMovieDto> GetMovieById(int id);
     }
 }
