@@ -31,20 +31,35 @@ namespace WebBackend.Repositories.Episodes
             return episode;
         }
 
-        public async Task<ICollection<Episode>> GetEpisodesBySeasonId(int seasonId)
+        public async Task<ICollection<Episode>> GetEpisodesBySeasonId(int episodeId)
         {
             var episodeList = await _context.Episodes
-                .Where(e => e.SeasonId == seasonId)
+                .Where(e => e.SeasonId == episodeId)
                 .ToListAsync();
             return episodeList;
         }
 
         
 
-        public async Task UpdateEpisode(Episode episode)
+        public async Task UpdateEpisode(int episodeId, Episode episode)
         {
-            _context.Episodes.Update(episode);
+            var existingEpisode = await _context.Episodes.FindAsync(episodeId);
+            if (existingEpisode == null)
+            {
+                throw new KeyNotFoundException($"Episode with ID {episodeId} not found");
+            }
+            existingEpisode.Title = episode.Title;
+            existingEpisode.EpisodeNumber = episode.EpisodeNumber;
+            existingEpisode.Duration = episode.Duration;
+            existingEpisode.ReleaseDate = episode.ReleaseDate;
+            existingEpisode.ThumbnailUrl = episode.ThumbnailUrl;
+            existingEpisode.Quality = episode.Quality;
+            existingEpisode.VideoUrl = episode.VideoUrl;
+
+
             await _context.SaveChangesAsync();
+
+
         }
     }
 }

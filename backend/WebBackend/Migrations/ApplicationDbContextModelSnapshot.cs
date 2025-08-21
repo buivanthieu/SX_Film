@@ -510,7 +510,7 @@ namespace WebBackend.Migrations
                     b.Property<int>("SeasonNumber")
                         .HasColumnType("int");
 
-                    b.Property<int>("SeriesId")
+                    b.Property<int>("SeriId")
                         .HasColumnType("int");
 
                     b.Property<string>("Title")
@@ -518,7 +518,7 @@ namespace WebBackend.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("SeriesId");
+                    b.HasIndex("SeriId");
 
                     b.ToTable("Seasons");
                 });
@@ -642,7 +642,7 @@ namespace WebBackend.Migrations
                     b.HasDiscriminator().HasValue("Movie");
                 });
 
-            modelBuilder.Entity("WebBackend.Models.Series", b =>
+            modelBuilder.Entity("WebBackend.Models.Seri", b =>
                 {
                     b.HasBaseType("WebBackend.Models.Film");
 
@@ -862,9 +862,9 @@ namespace WebBackend.Migrations
 
             modelBuilder.Entity("WebBackend.Models.Season", b =>
                 {
-                    b.HasOne("WebBackend.Models.Series", "Series")
+                    b.HasOne("WebBackend.Models.Seri", "Series")
                         .WithMany("Seasons")
-                        .HasForeignKey("SeriesId")
+                        .HasForeignKey("SeriId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -948,7 +948,7 @@ namespace WebBackend.Migrations
                     b.Navigation("WatchHistories");
                 });
 
-            modelBuilder.Entity("WebBackend.Models.Series", b =>
+            modelBuilder.Entity("WebBackend.Models.Seri", b =>
                 {
                     b.Navigation("Seasons");
                 });

@@ -8,7 +8,7 @@ namespace WebBackend.Repositories.Series
         Task<ICollection<Seri>> GetAllSeries();
         Task<Seri?> GetSeriById(int id);
         Task AddSeri(Seri series);
-        Task UpdateSeri(Seri series);
+        Task UpdateSeri(int seriId, Seri seri);
         Task DeleteSeri(int id);
     }
 }

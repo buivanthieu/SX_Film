@@ -6,7 +6,7 @@ namespace WebBackend.Services.Series
     {
 
         Task AddSeri(CreateSeriDto seriesDto);
-        Task UpdateSeri(UpdateSeriDto seriesDto);
+        Task UpdateSeri(int seriId, UpdateSeriDto seriesDto);
         Task DeleteSeri(int id);
         Task<ICollection<GetSeriDto>> GetAllSeries();
         Task<GetSeriDto> GetSeriById(int id);

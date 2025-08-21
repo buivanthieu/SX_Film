@@ -33,7 +33,7 @@ namespace WebBackend.Controllers
         public async Task<IActionResult> UpdateSeri(int id, [FromBody] UpdateSeriDto seriDto)
         {
 
-            await _seriService.UpdateSeri(seriDto);
+            await _seriService.UpdateSeri(id, seriDto);
             return NoContent();
         }
         [HttpDelete("{id}")]

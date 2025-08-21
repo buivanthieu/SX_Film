@@ -7,7 +7,7 @@ namespace WebBackend.Repositories.Movies
         Task<ICollection<Movie>> GetAllMovies();
         Task<Movie?> GetMovieById(int id);
         Task AddMovie(Movie movie);
-        Task UpdateMovie(Movie movie);
+        Task UpdateMovie(int movieId, Movie movie);
         Task DeleteMovie(int id);
     }
 }

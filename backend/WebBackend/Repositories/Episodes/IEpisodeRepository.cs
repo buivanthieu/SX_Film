@@ -9,7 +9,7 @@ namespace WebBackend.Repositories.Episodes
         Task<Episode?> GetEpisodeById(int id);
         Task<ICollection<Episode>> GetEpisodesBySeasonId(int seasonId);
         Task AddEpisode(Episode episode);
-        Task UpdateEpisode(Episode episode);
+        Task UpdateEpisode(int episodeId, Episode episode);
         Task DeleteEpisode(int id);
     }
 }

@@ -37,14 +37,24 @@ namespace WebBackend.Repositories.Series
             return seri;
         }
 
-        public async Task UpdateSeri(Seri seri)
+        public async Task UpdateSeri(int seriId, Seri seri)
         {
             var existingSeri = _context.Series.Find(seri.Id);
             if (existingSeri == null)
             {
                 throw new KeyNotFoundException($"Seri with ID {seri.Id} not found");
             }
-            _context.Entry(existingSeri).CurrentValues.SetValues(seri);
+            existingSeri.Title = seri.Title;
+            existingSeri.Description = seri.Description;
+            existingSeri.ReleaseDate = seri.ReleaseDate;
+            existingSeri.ReleaseYear = seri.ReleaseYear;
+            existingSeri.Language = seri.Language;
+            existingSeri.OriginalTitle = seri.OriginalTitle;
+            existingSeri.PosterUrl = seri.PosterUrl;
+            existingSeri.BannerUrl = seri.BannerUrl;
+            existingSeri.TrailerUrl = seri.TrailerUrl;
+            existingSeri.Country = seri.Country;
+            existingSeri.IsCompleted = seri.IsCompleted;
             await _context.SaveChangesAsync();
         }
     }

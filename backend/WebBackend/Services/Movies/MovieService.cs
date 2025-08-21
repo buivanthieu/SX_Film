@@ -20,10 +20,11 @@ namespace WebBackend.Services.Movies
             await _movieRepository.AddMovie(movie);
 
         }
-        public async Task UpdateMovie(UpdateMovieDto movieDto)
+        public async Task UpdateMovie(int movieId, UpdateMovieDto movieDto)
         {
             var movie = _mapper.Map<Movie>(movieDto);
-            await _movieRepository.UpdateMovie(movie);
+
+            await _movieRepository.UpdateMovie(movieId, movie);
         }
         public async Task DeleteMovie(int id)
         {

@@ -33,15 +33,15 @@ namespace WebBackend.Controllers
         public async Task<IActionResult> UpdateMovie(int id, [FromBody] UpdateMovieDto movieDto)
         {
             
-            await _movieService.UpdateMovie(movieDto);
-            return NoContent();
+            await _movieService.UpdateMovie(id, movieDto);
+            return Ok();
         }
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteMovie(int id)
         {
             
             await _movieService.DeleteMovie(id);
-            return NoContent();
+            return Ok();
         }
 
     }

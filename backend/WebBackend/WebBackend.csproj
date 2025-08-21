@@ -34,17 +34,12 @@
     <Folder Include="Dtos\Reports\" />
     <Folder Include="Dtos\Users\" />
     <Folder Include="Dtos\WatchHistories\" />
-    <Folder Include="Repositories\Seasons\" />
     <Folder Include="Repositories\Ratings\" />
-    <Folder Include="Repositories\Users\" />
     <Folder Include="Services\Bookmarks\" />
     <Folder Include="Services\Comments\" />
-    <Folder Include="Services\Episode\" />
     <Folder Include="Services\FilmActor\" />
-    <Folder Include="Services\Auths\" />
     <Folder Include="Services\Ratings\" />
-    <Folder Include="Services\Seasons\" />
-    <Folder Include="Services\Users\" />
+    <Folder Include="wwwroot\videos\" />
   </ItemGroup>
 
 </Project>

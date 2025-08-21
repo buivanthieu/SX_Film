@@ -125,7 +125,7 @@ namespace WebBackend.Datas
             modelBuilder.Entity<Seri>()
                 .HasMany(s => s.Seasons)
                 .WithOne(se => se.Series)
-                .HasForeignKey(se => se.SeriesId)
+                .HasForeignKey(se => se.SeriId)
                 .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<Season>()

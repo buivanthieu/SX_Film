@@ -20,10 +20,10 @@ namespace WebBackend.Services.Series
             await _seriRepository.AddSeri(seri);
 
         }
-        public async Task UpdateSeri(UpdateSeriDto seriDto)
+        public async Task UpdateSeri(int seriId, UpdateSeriDto seriDto)
         {
             var seri = _mapper.Map<Seri>(seriDto);
-            await _seriRepository.UpdateSeri(seri);
+            await _seriRepository.UpdateSeri(seriId, seri);
         }
         public async Task DeleteSeri(int id)
         {

@@ -4,7 +4,7 @@
     {
         public int Id { get; set; }
 
-        public int SeriesId { get; set; }
+        public int SeriId { get; set; }
         public Seri Series { get; set; } = null!;
 
         public int SeasonNumber { get; set; }
