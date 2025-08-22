@@ -3,6 +3,7 @@ using WebBackend.Dtos.Actors;
 using WebBackend.Dtos.Films;
 using WebBackend.Dtos.Movies;
 using WebBackend.Dtos.Series;
+using WebBackend.Dtos.Users;
 using WebBackend.Models;
 
 namespace WebBackend.Mappers
@@ -28,6 +29,11 @@ namespace WebBackend.Mappers
             CreateMap<Seri, GetSeriDto>()
                 .ReverseMap();
             CreateMap<GetSeriWithSeasonsDto, Seri>()
+                .ReverseMap();
+
+            CreateMap<GetUserDto, User>()
+                .ReverseMap();
+            CreateMap<GetDetailUserDto, User>()
                 .ReverseMap();
         }
     } 

@@ -32,7 +32,6 @@
     <Folder Include="Dtos\FilmActor\" />
     <Folder Include="Dtos\Ratings\" />
     <Folder Include="Dtos\Reports\" />
-    <Folder Include="Dtos\Users\" />
     <Folder Include="Dtos\WatchHistories\" />
     <Folder Include="Repositories\Ratings\" />
     <Folder Include="Services\Bookmarks\" />
